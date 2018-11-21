@@ -11,8 +11,8 @@ const styles = {
   }
 }
 
-const Map = ({profile}) => {
-  const { name, location: {address} } = profile
+const Map = ({user}) => {
+  const { name, location: {address} } = user
   return (
     <section id="map" style={styles.map}>
       <p>Hi {name}.</p>

@@ -8,10 +8,10 @@ const styles = {
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    padding: '.5em 0',
+    padding: '.5rem 0',
     borderBottom: '1px solid darkgrey',
     [`@media all and (min-width: ${c.breakPoints.sm})`]: {
-      padding: '1em 0'
+      padding: '1rem 0'
     }
   },
   wrapper: {
@@ -20,18 +20,18 @@ const styles = {
     justifyContent: 'flex-start'
   },
   company: {
-    fontSize: '1.1em',
+    fontSize: '1.2rem',
     fontFamily: 'Pacifico',
     display: 'inline',
     [`@media all and (min-width: ${c.breakPoints.sm})`]: {
-      fontSize: '2em'
+      fontSize: '2rem'
     }
   },
   image: {
-    width: '2em',
-    marginRight: '0.5em',
+    width: '2rem',
+    marginRight: '0.5rem',
     [`@media all and (min-width: ${c.breakPoints.sm})`]: {
-      width: '4em'
+      width: '4rem'
     }
   }
 }
@@ -43,7 +43,7 @@ const LoginButton = () => (
 const UserDropdown = ({user}) => {
   const firstName = user.name.split(" ")[0]
   return (
-    <span>{firstName}</span>
+    <span style={{fontSize: '1.1em'}}>{firstName}</span>
   )
 }
 

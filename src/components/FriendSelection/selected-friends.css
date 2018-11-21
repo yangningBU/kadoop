@@ -7,7 +7,7 @@
   border: 1px solid var(--darkgreen);
   background-color: var(--mediumgreen);
   color: var(--darkgreen);
-  padding: .25em;
-  margin: .25em;
+  padding: .25rem;
+  margin: .25rem;
   display: inline-block;
 }

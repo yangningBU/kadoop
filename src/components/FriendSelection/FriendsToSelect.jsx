@@ -8,10 +8,10 @@ const styles = {
   friend: {
     display: 'flex',
     alignItems: 'center',
-    minWidth: '5em'
+    minWidth: '5rem'
   },
   label: {
-    margin: '0.5em'
+    margin: '0.5rem'
   }
 }
 

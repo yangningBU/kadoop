@@ -4,14 +4,14 @@ import Header from './components/Header.jsx'
 import FriendSelection from './components/FriendSelection/FriendSelection.jsx'
 import Map from './components/Map/Map.jsx'
 import friends from './data/friends.json'
-import profile from './data/profile.json'
+import user from './data/user.json'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      profile: {},
+      user: {},
       friends: [],
       selectedFriends: []
     }
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.setState({friends: friends, profile: profile})
+    this.setState({friends: friends, user: user})
   }
 
   selectFriend(e) {
@@ -52,13 +52,13 @@ class App extends Component {
   render() {
     return (
       <StyleRoot style={{height: '100%'}}>
-        <Header user={this.state.profile} />
+        <Header user={this.state.user} />
         <FriendSelection
           friends={this.state.friends}
           selectedFriends={this.state.selectedFriends}
           selectFriend={this.selectFriend}
         />
-        <Map profile={this.state.profile} />
+        <Map user={this.state.user} />
       </StyleRoot>
     );
   }
