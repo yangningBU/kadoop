@@ -1,3 +1,2 @@
-kadoop
-======
-this is the README file.
+# Kadoop
+Meet up with your friends to discuss last night's scoop

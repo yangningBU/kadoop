@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Kristian Fidrych",
+    "location": {
+      "address": "1948 S Chadwick St, Philadelphia, PA 19146"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Danny Robinson",
+    "location": {
+      "address": "1927 S Broad St, Philadelphia, PA 19148"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Daniel Laurence",
+    "location": {
+      "address": "1512 S Broad St, Philadelphia, PA 19146"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Adam Alalouf",
+    "location": {
+      "address": "421 N 41 St, Philadelphia, PA"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Sara Zebovitz",
+    "location": {
+      "address": "1315 Walnust St, Philadelphia, PA 19107"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Molly Hunt",
+    "location": {
+      "address": "Coolidge Corner, Brookline, MA"
+    }
+  }
+]
