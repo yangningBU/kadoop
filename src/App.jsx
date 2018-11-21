@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { StyleRoot } from 'radium';
+import Header from './components/Header.jsx'
 import FriendSelection from './components/FriendSelection/FriendSelection.jsx'
 import Map from './components/Map/Map.jsx'
 import friends from './data/friends.json'
 import profile from './data/profile.json'
-import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -50,14 +51,15 @@ class App extends Component {
   
   render() {
     return (
-      <>
+      <StyleRoot style={{height: '100%'}}>
+        <Header user={this.state.profile} />
         <FriendSelection
           friends={this.state.friends}
           selectedFriends={this.state.selectedFriends}
           selectFriend={this.selectFriend}
         />
         <Map profile={this.state.profile} />
-      </>
+      </StyleRoot>
     );
   }
 }

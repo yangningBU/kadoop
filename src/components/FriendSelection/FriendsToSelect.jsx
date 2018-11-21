@@ -1,23 +1,37 @@
 import React from 'react'
 
+const styles = {
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  friend: {
+    display: 'flex',
+    alignItems: 'center',
+    minWidth: '5em'
+  },
+  label: {
+    margin: '0.5em'
+  }
+}
+
 const FriendsToSelect = ({friends, selectFriend}) => {
   return (
-    <div className="row">
-      <form>
+    <div>
+      <form style={styles.wrapper}>
         {friends.map((friend) => {
           const name = `checkbox-friend-${friend.id}`
 
           return (
-            <div className="form-check" key={friend.id}>
+            <div key={friend.id} style={styles.friend}>
               <input
                 type="checkbox"
-                className="form-check-input"
                 name={name}
                 id={name}
                 data-friend-id={friend.id}
                 onClick={selectFriend}
               />
-              <label htmlFor={name} className="form-check-label">
+              <label htmlFor={name} style={styles.label}>
                 {friend.name}
               </label>
             </div>
