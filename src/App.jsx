@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-
-import SelectedFriends from './components/SelectedFriends'
-import FriendsToSelect from './components/FriendsToSelect'
-
+import FriendSelection from './components/FriendSelection/FriendSelection.jsx'
+import Map from './components/Map/Map.jsx'
 import friends from './data/friends.json'
 import profile from './data/profile.json'
+import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +30,13 @@ class App extends Component {
       const friend = previousState.friends.find(friend => friendId === `${friend.id}`)
       const alreadySelectedIndex = previousState.selectedFriends.findIndex(f => f.id === friend.id)
 
-      if (alreadySelectedIndex > -1) {
+      if (alreadySelectedIndex === -1) {
+        // Add
+        return Object.assign({}, {
+          selectedFriends: [...previousState.selectedFriends, friend]
+        })
+        
+      } else {
         // Remove
         return Object.assign({}, {
           selectedFriends: [
@@ -39,24 +44,20 @@ class App extends Component {
             ...previousState.selectedFriends.slice(alreadySelectedIndex + 1)
           ]
         })
-      } else {
-        // Add
-        return Object.assign({}, {
-          selectedFriends: [...previousState.selectedFriends, friend]
-        })
       }
     })
   }
   
   render() {
     return (
-
-      <div className="container">
-        <section className="col">
-          <SelectedFriends selectedFriends={this.state.selectedFriends} />
-          <FriendsToSelect friends={this.state.friends} selectFriend={this.selectFriend}/>
-        </section>
-      </div>
+      <>
+        <FriendSelection
+          friends={this.state.friends}
+          selectedFriends={this.state.selectedFriends}
+          selectFriend={this.selectFriend}
+        />
+        <Map profile={this.state.profile} />
+      </>
     );
   }
 }

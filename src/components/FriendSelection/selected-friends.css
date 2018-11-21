@@ -1,0 +1,13 @@
+:root {
+  --lightgreen: #c3e6cb;
+  --mediumgreen: #d4edda;
+  --darkgreen: green;
+}
+.selected-friend {
+  border: 1px solid var(--darkgreen);
+  background-color: var(--mediumgreen);
+  color: var(--darkgreen);
+  padding: .25em;
+  margin: .25em;
+  display: inline-block;
+}
