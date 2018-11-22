@@ -31,7 +31,6 @@ class MapContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    console.log(props)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -59,6 +58,7 @@ class MapContainer extends Component {
           lat: latitude,
           lng: longitude
         }}
+        onClick={this.onMapClicked}
       >
         <Marker
           name={firstName}
