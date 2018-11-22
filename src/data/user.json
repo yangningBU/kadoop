@@ -1,7 +1,11 @@
 {
   "id": 0,
-  "name": "Yonatan Laurence",
+  "firstName": "Yonatan",
+  "lastName": "Laurence",
+  "fullName": "Yonatan Laurence",
   "location": {
-    "address": "2637 S Mildred St, Philadelphia, PA 19148"
+    "address": "2637 S Mildred St, Philadelphia, PA 19148",
+    "latitude": 39.91599,
+    "longitude": -75.16186
   }
 }

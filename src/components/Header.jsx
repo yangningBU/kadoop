@@ -41,9 +41,8 @@ const LoginButton = () => (
 )
 
 const UserDropdown = ({user}) => {
-  const firstName = user.name.split(" ")[0]
   return (
-    <span style={{fontSize: '1.1em'}}>{firstName}</span>
+    <span style={{fontSize: '1.1em'}}>{user.firstName}</span>
   )
 }
 
@@ -53,7 +52,7 @@ const Header = ({user}) => {
       <span style={styles.wrapper}>
         <img
           src={coffeeCup}
-          alt="logo, sketch of steaming cup of coffee, black on white background"
+          alt="Steaming Coffee Cup Logo"
           style={styles.image}
           />
         <span style={styles.company}>Kadoop</span>
