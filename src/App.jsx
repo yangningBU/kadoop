@@ -32,23 +32,28 @@ class App extends Component {
       const alreadySelectedIndex = previousState.selectedFriends.findIndex(f => f.id === friend.id)
 
       if (alreadySelectedIndex === -1) {
-        // Add
-        return Object.assign({}, {
-          selectedFriends: [...previousState.selectedFriends, friend]
-        })
-        
+        return this._getAddFriendState(previousState, friend)
       } else {
-        // Remove
-        return Object.assign({}, {
-          selectedFriends: [
-            ...previousState.selectedFriends.slice(0, alreadySelectedIndex),
-            ...previousState.selectedFriends.slice(alreadySelectedIndex + 1)
-          ]
-        })
+        return this._getRemoveFriendState(previousState, alreadySelectedIndex)
       }
     })
   }
-  
+
+  _getAddFriendState(previousState, newFriend) {
+    return Object.assign({}, {
+      selectedFriends: [...previousState.selectedFriends, newFriend]
+    })
+  }
+
+  _getRemoveFriendState(previousState, existingFriendIndex) {
+    return Object.assign({}, {
+      selectedFriends: [
+        ...previousState.selectedFriends.slice(0, existingFriendIndex),
+        ...previousState.selectedFriends.slice(existingFriendIndex + 1)
+      ]
+    })
+  }
+
   render() {
     return (
       <StyleRoot style={{height: '100%'}}>
