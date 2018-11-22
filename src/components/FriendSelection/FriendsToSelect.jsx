@@ -32,7 +32,7 @@ const FriendsToSelect = ({friends, selectFriend}) => {
                 onClick={selectFriend}
               />
               <label htmlFor={name} style={styles.label}>
-                {friend.name}
+                {friend.fullName}
               </label>
             </div>
           )

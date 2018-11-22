@@ -1,44 +1,68 @@
 [
   {
     "id": 1,
-    "name": "Kristian Fidrych",
+    "firstName": "Kristian",
+    "lastName": "Fidrych",
+    "fullName": "Kristian Fidrych",
     "location": {
-      "address": "1948 S Chadwick St, Philadelphia, PA 19146"
+      "address": "1948 S Chadwick St, Philadelphia, PA 19146",
+      "latitude": 39.9263144,
+      "longitude": -75.1760161
     }
   },
   {
     "id": 2,
-    "name": "Danny Robinson",
+    "firstName": "Danny",
+    "lastName": "Robinson",
+    "fullName": "Danny Robinson",
     "location": {
-      "address": "1927 S Broad St, Philadelphia, PA 19148"
+      "address": "1927 S Broad St, Philadelphia, PA 19148",
+      "latitude": 39.9260666,
+      "longitude": -75.171171
     }
   },
   {
     "id": 3,
-    "name": "Daniel Laurence",
+    "firstName": "Daniel",
+    "lastName": "Laurence",
+    "fullName": "Daniel Laurence",
     "location": {
-      "address": "1512 S Broad St, Philadelphia, PA 19146"
+      "address": "1512 S Broad St, Philadelphia, PA 19146",
+      "latitude": 39.9313428,
+      "longitude": -75.1706694
     }
   },
   {
     "id": 4,
-    "name": "Adam Alalouf",
+    "firstName": "Adam",
+    "lastName": "Alalouf",
+    "fullName": "Adam Alalouf",
     "location": {
-      "address": "421 N 41 St, Philadelphia, PA"
+      "address": "421 N 41 St, Philadelphia, PA",
+      "latitude": 39.960775,
+      "longitude": -75.2072907
     }
   },
   {
     "id": 5,
-    "name": "Sara Zebovitz",
+    "firstName": "Sara",
+    "lastName": "Zebovitz",
+    "fullName": "Sara Zebovitz",
     "location": {
-      "address": "1315 Walnust St, Philadelphia, PA 19107"
+      "address": "1315 Walnust St, Philadelphia, PA 19107",
+      "latitude": 39.9493005,
+      "longitude": -75.1651571
     }
   },
   {
     "id": 6,
-    "name": "Molly Hunt",
+    "firstName": "Molly",
+    "lastName": "Hunt",
+    "fullName": "Molly Hunt",
     "location": {
-      "address": "Coolidge Corner, Brookline, MA"
+      "address": "Coolidge Corner, Brookline, MA",
+      "latitude": 42.3423252,
+      "longitude": -71.1228494
     }
   }
 ]

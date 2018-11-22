@@ -5,7 +5,7 @@ const SelectedFriends = ({selectedFriends}) => (
   <div className="row">
     Kadooping with:
     {selectedFriends.map((friend) => (
-      <p className="selected-friend" key={friend.id}>{friend.name}</p>
+      <p className="selected-friend" key={friend.id}>{friend.fullName}</p>
     ))}
   </div>
 )

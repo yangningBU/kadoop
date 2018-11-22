@@ -58,7 +58,7 @@ class App extends Component {
           selectedFriends={this.state.selectedFriends}
           selectFriend={this.selectFriend}
         />
-        <Map user={this.state.user} />
+        <Map user={this.state.user} selectedFriends={this.state.selectedFriends}/>
       </StyleRoot>
     );
   }

@@ -24,55 +24,61 @@ class MapContainer extends Component {
 
     this.state = {
       showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-    };
+      activeMarker: {}
+    }
 
+    this.onMarkerClick = this.onMarkerClick.bind(this)
+    this.onMapClicked = this.onMapClicked.bind(this)
   }
 
-  onMarkerClick = (props, marker, e) => {
+  onMarkerClick(props, marker, e) {
     this.setState({
-      selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    });
+    })
   }
 
-  onMapClicked = (props) => {
+  onMapClicked(props) {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
       })
     }
-  };
+  }
 
   render() {
-    const { firstName, location: { address, latitude, longitude } } = this.props.user
+    const { activeMarker } = this.state
+
     return (
       <Map
         containerStyle={styles.map}
         google={this.props.google}
-        zoom={15}
+        zoom={13}
         initialCenter={{
-          lat: latitude,
-          lng: longitude
+          lat: this.props.user.location.latitude,
+          lng: this.props.user.location.longitude
         }}
         onClick={this.onMapClicked}
       >
-        <Marker
-          name={firstName}
-          address={address}
-          position={{lat: latitude, lng: longitude}}
-          onClick={this.onMarkerClick}
-          style={{color: 'yellow'}}
-        />
+        {[this.props.user, ...this.props.selectedFriends].map(person => {
+          const { id, firstName, location: { address, latitude, longitude } } = person
+          return (
+            <Marker
+              key={`marker-friend-id-${id}`}
+              firstName={firstName}
+              address={address}
+              position={{lat: latitude, lng: longitude}}
+              onClick={this.onMarkerClick}
+            />
+          )
+        })}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <>
-              <h5><FaStreetView /> {this.state.selectedPlace.name}</h5>
-              <p>{this.state.selectedPlace.address}</p>
+              <h5><FaStreetView /> {activeMarker && activeMarker.firstName}</h5>
+              <p>{activeMarker && activeMarker.address}</p>
             </>
         </InfoWindow>
       </Map>
