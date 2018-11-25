@@ -18,17 +18,46 @@ const styles = {
   }
 }
 
+const DEFAULT_ZOOM = 13
+
+const markerID = id => (`marker-friend-id-${id}`)
+
 class MapContainer extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      bounds: null,
       showingInfoWindow: false,
       activeMarker: {}
     }
 
     this.onMarkerClick = this.onMarkerClick.bind(this)
     this.onMapClicked = this.onMapClicked.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedFriends.length !== this.props.selectedFriends.length) {
+      this._refitMapToMarkers()
+      this.setState({showingInfoWindow: false})
+    }
+  }
+
+  _refitMapToMarkers() {
+    const { selectedFriends, user: { location: { latitude, longitude } }} = this.props
+    const markers = selectedFriends.map(f => f.id).map(id => this.refs[markerID(id)].marker)
+    const friendPositions = markers.map(marker => {
+      return {lat: marker.position.lat(), lng: marker.position.lng()}
+    })
+    const positions = [{lat: latitude, lng: longitude}, ...friendPositions]
+    const bounds = new this.props.google.maps.LatLngBounds()
+    positions.forEach(position => bounds.extend(position))
+    // Due to a bug in 'google-maps-react' I can't just set bounds to null
+    this.setState({bounds}, () => { if (!selectedFriends.length) this._resetMapZoom() })
+  }
+
+  _resetMapZoom() {
+    this.refs.map.map.setZoom(DEFAULT_ZOOM)
   }
 
   onMarkerClick(props, marker, e) {
@@ -49,27 +78,32 @@ class MapContainer extends Component {
 
   render() {
     const { activeMarker } = this.state
+    const mapProps = {
+      containerStyle: styles.map,
+      ref: "map",
+      google: this.props.google,
+      zoom: DEFAULT_ZOOM,
+      initialCenter: {
+        lat: this.props.user.location.latitude,
+        lng: this.props.user.location.longitude
+      },
+      onClick: this.onMapClicked,
+      bounds: this.state.bounds
+    }
 
     return (
-      <Map
-        containerStyle={styles.map}
-        google={this.props.google}
-        zoom={13}
-        initialCenter={{
-          lat: this.props.user.location.latitude,
-          lng: this.props.user.location.longitude
-        }}
-        onClick={this.onMapClicked}
-      >
+      <Map {...mapProps}>
         {[this.props.user, ...this.props.selectedFriends].map(person => {
           const { id, firstName, location: { address, latitude, longitude } } = person
           return (
             <Marker
-              key={`marker-friend-id-${id}`}
+              key={markerID(id)}
               firstName={firstName}
+              title={address /* this is the HTML tooltip text when hovering over the marker */}
               address={address}
               position={{lat: latitude, lng: longitude}}
               onClick={this.onMarkerClick}
+              ref={markerID(id)}
             />
           )
         })}
@@ -86,17 +120,13 @@ class MapContainer extends Component {
   }
 }
 
-/*
-<Marker latitude={latitude} longitude={longitude} offsetLeft={-20} offsetTop={-10}>
-  <div style={styles.marker}>
-    <h5><FaStreetView /></h5>
-    <h5 style={{backgroundColor: 'white'}}>{firstName}</h5>
-  </div>
-</Marker>
-*/
-
 const LoadingContainer = (props) => (
-  <div>Loading map...</div>
+  <div style={{
+    textAlign: 'center',
+    fontSize: '2em',
+    borderTop: '1px solid black',
+    paddingTop: '1em'
+  }}>Loading map...</div>
 )
 
 export default GoogleApiWrapper({

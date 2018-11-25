@@ -11,16 +11,12 @@ class App extends Component {
     super(props)
 
     this.state = {
-      user: {},
-      friends: [],
+      user: user,
+      friends: friends,
       selectedFriends: []
     }
 
     this.selectFriend = this.selectFriend.bind(this)
-  }
-
-  componentWillMount() {
-    this.setState({friends: friends, user: user})
   }
 
   selectFriend(e) {
@@ -63,7 +59,7 @@ class App extends Component {
           selectedFriends={this.state.selectedFriends}
           selectFriend={this.selectFriend}
         />
-        <Map user={this.state.user} selectedFriends={this.state.selectedFriends}/>
+        <Map user={this.state.user} selectedFriends={this.state.selectedFriends} />
       </StyleRoot>
     );
   }
